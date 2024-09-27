@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 			title = "Travel Expense Manager - Trip API", 
 			description = "Proyecto final - Diplomado de Desarrollo "
 					+ "y Despliegue de Aplicaciones Cloud Native "
-					+ "Endpoints para viajes", 
+					+ " - Trip Endpoints", 
 			contact = @Contact(
 				name = "Hugo Emilio Jara Rivera", 
 				url = "https://github.com/hugoemiliojara7", 
