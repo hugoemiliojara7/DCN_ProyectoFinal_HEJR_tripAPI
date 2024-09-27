@@ -42,9 +42,9 @@ public class TripController implements TripApi {
 	public ResponseEntity<Trip> updateTrip(String idTrip, Trip trip) {
 		Trip updatedTrip = service.updateTrip(idTrip, trip);
 		
-		if (updatedTrip != null) {
+		if (updatedTrip != null)
 			return new ResponseEntity<>(updatedTrip, HttpStatus.OK) ;
-		}
+		
 		return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 	} 
 
