@@ -36,9 +36,6 @@ public class TripService implements ITripService {
 		Optional<Trip> oldTrip = repository.findById(idTrip);
 		
 		if (oldTrip.isPresent()) {
-			//Trip estadoActualizar = estadoExistente.get();
-			//estadoActualizar.setNombre(estado.getNombre());
-			//estadoRepository.save(estadoActualizar);
 			repository.save(trip);
 			return trip;
 		}
