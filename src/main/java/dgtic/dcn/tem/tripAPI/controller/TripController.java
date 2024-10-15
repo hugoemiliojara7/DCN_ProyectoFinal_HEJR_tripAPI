@@ -22,6 +22,7 @@ public class TripController implements TripApi {
 		return service.findAllTrips();
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ResponseEntity<Trip> getTripById(String idTrip) {	
 		Optional<Trip> trip = service.findTripById(idTrip);
@@ -38,6 +39,7 @@ public class TripController implements TripApi {
 		return service.saveTrip(trip);
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public ResponseEntity<Trip> updateTrip(String idTrip, Trip trip) {
 		Trip updatedTrip = service.updateTrip(idTrip, trip);
