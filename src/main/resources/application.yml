@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: tripAPI
+  data:
+    mongodb: 
+      uri: mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.efcoq.mongodb.net
+      database: temDB
+      username: ${MONGODB_USERNAME}
+      password: ${MONGODB_PASSWORD}
+      
+server:
+  port: 8080
