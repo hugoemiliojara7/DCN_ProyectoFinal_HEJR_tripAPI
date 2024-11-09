@@ -26,6 +26,8 @@ public class TripController implements TripApi {
 	@SuppressWarnings("null")
 	@Override
 	public ResponseEntity<Trip> getTripById(String idTrip) {	
+
+		System.out.println("Mensaje para el master");
 		Optional<Trip> trip = service.findTripById(idTrip);
 		
 		if(trip.isPresent())
