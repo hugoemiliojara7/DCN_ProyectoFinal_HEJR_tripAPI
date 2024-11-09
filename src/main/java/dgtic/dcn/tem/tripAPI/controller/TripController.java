@@ -19,6 +19,7 @@ public class TripController implements TripApi {
 
 	@Override
 	public List<Trip> getAllTrips() {
+		System.out.println("Mensaje para el branch");
 		return service.findAllTrips();
 	}
 
