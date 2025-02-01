@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trip-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trip-api
+  template:
+    metadata:
+      labels:
+        app: trip-api
+    spec:
+      containers:
+        - name: trip-api
+          image: hugoejara7/tripapi:v1
+          ports:
+            - containerPort: 8080
+          
