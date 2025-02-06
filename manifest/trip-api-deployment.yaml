@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: trip-api
-          image: hugoejara7/tripapi:v1
+          image: hugoejara7/tripapi:v_f_unit_test
           ports:
             - containerPort: 8080
           
