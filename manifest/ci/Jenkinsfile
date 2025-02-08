@@ -4,7 +4,14 @@ pipeline {
         maven 'maven'
         jdk 'JDK17'
     }
+    
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('HEJR-docker-registry') 
+        DOCKER_IMAGE = 'hugoejara7/tripapi:v3' 
+    }
+
     stages {
+        
         stage ('Initialize') {
             steps {
                 sh '''
@@ -17,6 +24,21 @@ pipeline {
                 echo "** end notificaciones compilation"                            
                 '''
             }
+        }
+
+        stage('Build') {
+          steps {
+            sh 'sudo docker build -t ${DOCKER_IMAGE} .'
+          }
+        }
+
+        stage('Login & Push') {
+          steps {
+                sh '''
+                    echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin docker.io
+                    sudo docker push ${DOCKER_IMAGE}
+                '''
+          }
         }
     }  
 }
