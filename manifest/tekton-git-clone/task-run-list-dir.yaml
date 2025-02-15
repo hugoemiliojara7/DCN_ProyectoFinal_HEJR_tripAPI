@@ -1,20 +1,14 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  generateName: git-clone-
+  generateName: list-directory-
   namespace: diploe2-hejr
 spec:
   taskRef:
-    kind: Task
-    name: git-clone
+    name: list-directory
   podTemplate:
     securityContext:
       fsGroup: 65532
-  params:
-  - name: url
-    value: https://github.com/hugoemiliojara7/DCN_ProyectoFinal_HEJR_tripAPI
-  - name: deleteExisting
-    value: "true"
   workspaces:
     - name: directory
       persistentVolumeClaim:
