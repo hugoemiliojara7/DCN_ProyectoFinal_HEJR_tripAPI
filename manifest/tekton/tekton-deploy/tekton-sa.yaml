@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tekton-sa
+  namespace: diploe2-hejr
+secrets: 
+  - name: dockerconfig-secret
+imagePullSecrets:
+- name: dockerconfig-secret
+
