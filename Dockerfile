@@ -1,5 +1,5 @@
 FROM openjdk:17-oracle
-LABEL maintainer="Hugo Emilio Jara Rivera <hugoejara7@gmail.com"
+LABEL maintainer="Hugo Emilio Jara Rivera <hugoejara7@gmail.com>"
 EXPOSE 8080
 ARG MONGODB_USERNAME
 ARG MONGODB_PASSWORD
