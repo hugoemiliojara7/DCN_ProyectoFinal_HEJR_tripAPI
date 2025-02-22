@@ -12,7 +12,7 @@ spec:
     name: buildah
   params:
     - name: IMAGE
-      value: 'docker.io/hugoejara7/tripapi:v3'
+      value: 'docker.io/hugoejara7/tripapi:v4'
     - name: TLSVERIFY
       value: 'false'
     - name: STORAGE_DRIVER
