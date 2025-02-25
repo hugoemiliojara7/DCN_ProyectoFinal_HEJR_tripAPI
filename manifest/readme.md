@@ -17,7 +17,7 @@ El comando para crear el recurso en Kubernetes es el siguiente:
 
 En la siguiente imagen se aprecia que el PVC se creó en el namespace. 
 
-
+![Image](https://github.com/user-attachments/assets/1372433d-7682-4930-84f2-571c4269868a) 
 
 ### Ejercicio 6 - git-clone
 
