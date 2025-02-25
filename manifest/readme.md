@@ -82,6 +82,9 @@ El comando para aplicar el task de Tekton en Kubernetes es el siguiente:
 
 En la siguiente imagen se observa la creación del task y la impresión del log: 
 
+![Image](https://github.com/user-attachments/assets/ab145ebb-16ba-4efa-86ba-58310c602936)
+
+
 
 ### Notas sobre los ejercicios realizados 
 
