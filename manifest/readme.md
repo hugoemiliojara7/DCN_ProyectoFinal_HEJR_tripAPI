@@ -34,6 +34,7 @@ El comando para aplicar el task de Tekton en Kubernetes es el siguiente:
 
 En la siguiente imagen se observa la creación del task y su correcta ejecución. 
 
+![Image](https://github.com/user-attachments/assets/a5e4a0fa-8792-44bd-ada5-d41baab6214a)
 
 ### Ejercicio 6 - list-dir 
 
