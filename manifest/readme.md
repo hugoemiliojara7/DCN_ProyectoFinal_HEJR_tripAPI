@@ -85,6 +85,7 @@ En la siguiente imagen se observa la creación del task y la impresión del log:
 ![Image](https://github.com/user-attachments/assets/ab145ebb-16ba-4efa-86ba-58310c602936)
 
 
+![Image](https://github.com/user-attachments/assets/ce0a3a2b-9e41-4d4f-aa6f-698474fc315d) 
 
 ### Notas sobre los ejercicios realizados 
 
