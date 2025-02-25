@@ -49,6 +49,9 @@ El comando para aplicar el task de Tekton en Kubernetes es el siguiente:
 
 En la siguiente imagen se observa la creación del task y la impresión de la estructura del repositorio, lo cual indica que se "clonó" de Github correctamente: 
 
+![Image](https://github.com/user-attachments/assets/89d9c700-eed9-400f-834c-aba9012e7c47)
+
+
 
 ### Ejercicio 6 - maven build 
 
