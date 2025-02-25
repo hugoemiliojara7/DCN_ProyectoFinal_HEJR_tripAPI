@@ -26,6 +26,7 @@ Para este propósito, se creo un archivo .yaml (manifiesto), el cual nombré "ta
 
 En la siguiente imagen se observa el detalle del archivo .yaml. 
 
+![Image](https://github.com/user-attachments/assets/bd0bf313-be8f-4a82-851d-be70d13638e5)
 
 El comando para aplicar el task de Tekton en Kubernetes es el siguiente: 
 
