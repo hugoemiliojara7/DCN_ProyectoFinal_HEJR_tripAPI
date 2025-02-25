@@ -8,12 +8,15 @@ Para este fin, se definió un archivo .yaml (manifiesto) el cual tiene el nombre
 
 El detalle del manifiesto se aprecia en la siguiente imagen: 
 
+![Image](https://github.com/user-attachments/assets/126c5c91-675f-4efb-bba9-54f761084be7)
+
 
 El comando para crear el recurso en Kubernetes es el siguiente: 
 
     kubectl apply -f task-run-pvc.yaml -n diploe2-hejr
 
 En la siguiente imagen se aprecia que el PVC se creó en el namespace. 
+
 
 
 ### Ejercicio 6 - git-clone
