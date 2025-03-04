@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+ generateName: pipelinerun-helloworld-
+ namespace: diploe2-hejr
+spec:
+  serviceAccountName: tekton-sa
+  pipelineRef:
+    name: pipeline-hello-world
+  params:
+    - name: your-name
+      value: "Hugo Emilio Jara"
+    - name: repo-url
+      value: https://github.com/hugoemiliojara7/DCN_ProyectoFinal_HEJR_tripAPI
+  workspaces:
+    - name: empty-dir
+      emptyDir: {} 
