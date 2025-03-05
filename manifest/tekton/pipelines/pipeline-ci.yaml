@@ -1,0 +1,71 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-ci
+spec:
+  description: |
+    This pipeline was created for laboratory 3
+    Tasks defined in the pipeline:
+    - fetch-repository: fetching a git repository as the source (git-clone)
+    - maven: compile and package an application
+    - buildah: build an image and push it to the hub
+  params:
+    - name: repo-url
+      type: string
+    - name: maven-image
+      type: string 
+    - name: docker-image-version
+      type: string 
+  workspaces:
+    - name: workspace
+    - name: maven-settings
+    - name: source
+  tasks:
+   - name: fetch-repository
+     taskRef:
+       kind: Task
+       name: git-clone
+     params:
+       - name: url 
+         value: $(params.repo-url) 
+       - name: deleteExisting
+         value: true
+     workspaces:
+       - name: output
+         workspace: workspace           
+   - name: maven
+     taskRef:
+       kind: Task
+       name: maven
+     runAfter: 
+       - fetch-repository
+     params:
+       - name: GOALS
+         value:
+           - -B
+           - -DskipTests
+           - clean
+           - package
+       - name: MAVEN_IMAGE
+         value: $(params.maven-image)
+     workspaces:
+       - name: maven-settings
+         workspace: maven-settings
+       - name: source
+         workspace: workspace
+   - name: buildah
+     taskRef:
+       kind: Task
+       name: buildah
+     runAfter:
+       - maven
+     params:
+       - name: IMAGE
+         value: '$(params.docker-image-version)'
+       - name: TLSVERIFY
+         value: 'false'
+       - name: STORAGE_DRIVER
+         value: 'vfs'
+     workspaces:
+       - name: source
+         workspace: workspace
