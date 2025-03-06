@@ -20,3 +20,20 @@
 ## Mensaje prueba del ejercicio 9 - Tekton event listener - prueba 3
 
 ## > Verificación de mi CI/CD desde mi repositorio hugoemiliojara7/DCN_ProyectoFinal_HEJR_tripAPI
+
+# Documentación proyecto final
+
+## Continuos Integration - Integración continua 
+
+De acuerdo a los temas revisados durante el módulo 5, la integración continua se define como una pŕactica del desarrollo de software que tiene como proósito realizar la intgeración de cambios en el código (correcciones, nuevas funcinalidades, pruebas, documentación, etc) de forma autmática, partiendo del control de cambios de un repositorio. 
+La integración se entiende como el proceso de compilar y ejecutar un proyecto o servicio desarrollado. 
+
+### La documentación y detalle del proceso de integración continua en este proyecto se encuentra en el archivo llamado "README-CI.md" ubicado en la carpeta "/manifest". 
+
+## Continuos Delivery/Deployment - Entrega/Despliegue Continuo
+
+La entrega/despliegue continuo, por otra parte, es un práctica del desarrollo de software que tiene como objetivo la producción de software en ciclos de despliegue cortos, asegurando que las nuevas funcionalidades o correcciones realizadas al proyecto o servicio pueden liberarse a un ambiente productivo de forma confiable y atuomatizada. 
+Desde luego, esta práctica depende y va de la mano con el proceso de CI. 
+
+### La documentación y detalle del proceso de entrega/despliegue continuo en este proyecto se encuentra en el archivo llamado "README-CD.md" ubicado en la carpeta "/manifest". 
+
