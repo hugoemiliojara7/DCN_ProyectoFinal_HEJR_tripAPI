@@ -18,3 +18,5 @@
 ## Mensaje prueba del ejercicio 9 - Tekton event listener 
 ## Mensaje prueba del ejercicio 9 - Tekton event listener - prueba 2
 ## Mensaje prueba del ejercicio 9 - Tekton event listener - prueba 3
+
+## > Verificación de mi CI/CD desde mi repositorio hugoemiliojara7/DCN_ProyectoFinal_HEJR_tripAPI
