@@ -1,94 +1,27 @@
-# Práctica 2
+# Documentación Proyecto final - Entrega/Despliegue Continuo CD 
 
-## Descripción de lo aprendido en Tekton y los ejercicios realizados en el reporistorio del proyecto 
+## Descripción de lo aprendido en Tekton para realizar el proceso de entrega/despliegue continuo
 
-### Persistence Volume Claim - diploe2-hejr
-Previo a realizar las partes del ejercicio 6, fue necesario crear un persistence volumen en mi namespace (diploe2-hejr) para evitar conflictos en el contesto de Kubernetes. 
-Para este fin, se definió un archivo .yaml (manifiesto) el cual tiene el nombre "task-run-pvc.yaml" para crear el volume. 
+La entrega/despliegu continuo se define como una pŕactica del desarrollo de software que tiene como propósito omo objetivo la producción de software en ciclos de despliegue cortos, asegurando que las nuevas funcionalidades o correcciones realizadas al proyecto o servicio pueden liberarse a un ambiente productivo de forma confiable y atuomatizada. 
+En el contexto del proyecto del diplomado, el objetivo final del proceso de CD es ponder disponible el servicio desarrollado, es decir, crear un nuevo "deployment" en el cluster de Kubernetes a fin de que el servicio esté disponible para su utilización. 
+Es importante mencionar que el proceso de CD conlleva menos pasos ya que su tarea es unicamente desplegar la nueva versión del servicio en el cluster, lo cual se logra con los siguientes pasos: 
 
-El detalle del manifiesto se aprecia en la siguiente imagen: 
-
-![Image](https://github.com/user-attachments/assets/126c5c91-675f-4efb-bba9-54f761084be7)
-
-
-El comando para crear el recurso en Kubernetes es el siguiente: 
-
-    kubectl apply -f task-run-pvc.yaml -n diploe2-hejr
-
-En la siguiente imagen se aprecia que el PVC se creó en el namespace. 
-
-![Image](https://github.com/user-attachments/assets/1372433d-7682-4930-84f2-571c4269868a) 
-
-### Ejercicio 6 - git-clone
-
-Este ejercicio consistió en aplicar el comando  "git clone" al repositorio del diplomando mediante un task de Tekton.
-Para este propósito, se creo un archivo .yaml (manifiesto), el cual nombré "task-run-git-clone.yaml". 
-
-En la siguiente imagen se observa el detalle del archivo .yaml. 
-
-![Image](https://github.com/user-attachments/assets/bd0bf313-be8f-4a82-851d-be70d13638e5)
-
-El comando para aplicar el task de Tekton en Kubernetes es el siguiente: 
-
-    kubectl create -f task-run-git-clone.yaml -n diploe2-hejr
-
-En la siguiente imagen se observa la creación del task y su correcta ejecución. 
-
-![Image](https://github.com/user-attachments/assets/a5e4a0fa-8792-44bd-ada5-d41baab6214a)
-
-### Ejercicio 6 - list-dir 
-
-Este ejercicio consistió en crear otro manifiesto con el fin de observar si el comando "git clone" del ejercicio previo se había realizado correctamente. 
-En sentido estricto, este paso no es necesario en un "pipeline" de Tekton, ya que únicamente lista la estructura del repositorio en GitHub, sin embargo, es muy útil para corroborar que el git clone se realizó  correctamente. 
-
-En la siguiente imagen se observa la definición del archivo .yaml, el cual se nombró como "task-run-list-dir.yaml": 
-
-El comando para aplicar el task de Tekton en Kubernetes es el siguiente: 
-
-    kubectl create -f task-run-list-dir.yaml -n diploe2-hejr
-
-En la siguiente imagen se observa la creación del task y la impresión de la estructura del repositorio, lo cual indica que se "clonó" de Github correctamente: 
-
-![Image](https://github.com/user-attachments/assets/89d9c700-eed9-400f-834c-aba9012e7c47)
+    1. Eliminar el deployment anterior del servicio (un deployment creado con una versión anterior)
+    2. Crear un nuevo deployment con la nueva versión (la nueva versión es la imagen en el registry de la plataforma de contenedores, en este caso, Docker)
 
 
+## Prerequisitos y configuraciones previas 
 
-### Ejercicio 6 - maven build 
+Dado que el proceso de CD es dependiente y, a su vez, complementa el proceso de CI, los prerequisitos son los mismos descritos en el documento README-CI.md. 
 
-El siguiente ejercicio consistió en crear un manifiesto para ejecutar el "build" de la aplicación Java con Maven. 
+## Manifiestos para taskrun 
 
-Esto permite crear el ".jar" ejecutable de la aplicación del repositorio en cuestión, en este caso, la API desarrollada para el diplomado. 
+Para este proceso, se definieron los siguientes manifiestos yaml: 
 
-En la siguiente imagen se observa la definición del archivo .yaml, el cual se nombró como "task-run-mvn.yaml": 
-
-El comando para aplicar el task de Tekton en Kubernetes es el siguiente: 
-
-    kubectl create -f task-run-mvn.yaml -n diploe2-hejr
-
-En la siguiente imagen se observa la creación del task y la impresión del log: 
-
-![Image](https://github.com/user-attachments/assets/079bc476-ae22-4182-a265-bd50438b7822)
-
-### Ejercicio 6 - build-push
-
-Este ejercicio consiste en crear un manifiesto para subir los cambios realizados en el repositorio al hub de Docker. 
-
-En la siguiente imagen se observa la definición del archivo .yaml, el cual se nombró como "task-run-buildah.yaml": 
+    1.  ServiceAccount: Se definió una cuenta de servicio, la cual ejecuta el taskrun que crea el nuevo deploy. Esta serviceAccount debe ser la misma que se utiliza en el proceso de CI. Este manifiesto se encuentra en la ruta del repositorio manifest/tekton/tekton-deploy, con el nombre "tekton-sa.yaml"
+    2. task-run-deploy: Manifiesto con el cual se crea el nuevo deploy. Es de tipo "kubernates-actions" y tiene definido los pasos de eliminaci+ón del deployment existente del servicio (con una versión previa) y la creación del nuevo deploy, en el cual se especifico la imagen (versión) del servicio con el que se cuenta en el registry de la plataforma de contenedores (Docker). Este manifiesto se encuentra en la ruta del repositorio manifest/tekton/tekton-deploy, bajo el nombre "task-run-deploy.yaml". 
 
 
-El comando para aplicar el task de Tekton en Kubernetes es el siguiente: 
+En cuanto se ejecuta correctamente esta task-run, ya se tendrá displonible la nueva versión el servicio (deploy) para ser utilizado y/o consumido. 
+Con esto se completa el proceso CI/CD, desde la acción inicial de dar commit (push) a la rama principal del repositorio, la cual desencadena todos los pasos descritos en el README-CI, y en el presente documento. 
 
-    kubectl create -f task-run-buildah.yaml -n diploe2-hejr
-
-En la siguiente imagen se observa la creación del task y la impresión del log: 
-
-![Image](https://github.com/user-attachments/assets/ab145ebb-16ba-4efa-86ba-58310c602936)
-
-
-![Image](https://github.com/user-attachments/assets/ce0a3a2b-9e41-4d4f-aa6f-698474fc315d) 
-
-### Notas sobre los ejercicios realizados 
-
-Todos los ejercicios se realizaron en el branch del repositorio llamado "feature/git-clone-build", como se solicitó. En este branch se realizaron los commits correspondietes. 
-
-Los manifiestos ".yaml" se encuentran en la carpeta "../tripAPI/manifest/", los primeros dos en la carpeta "tekton-git-clone" y los segundos en la carpeta "tekton-build". 

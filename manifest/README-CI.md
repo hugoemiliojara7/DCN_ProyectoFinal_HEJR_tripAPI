@@ -2,7 +2,7 @@
 
 ## Descripción de lo aprendido en Tekton para realizar el proceso de integración continua 
 
-La integración continua se define como una pŕactica del desarrollo de software que tiene como proósito realizar la intgeración de cambios en el código (correcciones, nuevas funcinalidades, pruebas, documentación, etc) de forma autmática, partiendo del control de cambios de un repositorio.
+La integración continua se define como una pŕactica del desarrollo de software que tiene como propósito realizar la intgeración de cambios en el código (correcciones, nuevas funcinalidades, pruebas, documentación, etc) de forma autmática, partiendo del control de cambios de un repositorio.
 
 De acuerdo al proceso definido en las sesiones del módulo, los pasos básicos para implementar la integración continua en un proyecto son los siguientes: 
 
@@ -21,7 +21,7 @@ A fin de llevar a cabo el proceso correctamente, es necesario configurar un webh
 
 Adicionalmente, a fin de poder realizar el proceso correctamente, es necesario definir y crear los siguientes elemento en el cluster de Kubernetes en el cual se esté trabajando: 
 
-    1. ServiceAccount: Cuenta de servicio con la cual se ejcutarán las acciones en el cluster. Este objeto se crea mediante el manifesto llamado "tekton-trigger-sa.yaml", el cual se encuentra en la ruta del repositorio manifest/tekton/triggers/
+    1. ServiceAccount: Cuenta de servicio con la cual se ejecutarán las acciones en el cluster. Este objeto se crea mediante el manifesto llamado "tekton-trigger-sa.yaml", el cual se encuentra en la ruta del repositorio manifest/tekton/triggers/
     2. RoleBinding: Elemento que vincula la cuenta de servicio creada con el event-listener que se ejecutará. Este objeto se crea mediante el manifiesto llamado "tekton-trigger-role-binding.yaml", el cual se encuentra en la ruta del repositorio manifest/tekton/triggers/
     3. TriggerTemplate: Plantilla con la estructura necesaria para ejecutar el pipeline. En esta se definen los parámetros necesarios, así como el nombre del pipeline a ejecutar y, de ser necesario, las credenciales de las cuentas asociadas (Docker registry). Este objeto se crea mediante el manifiesto llamado "tekton-trigger-template.yaml", el cual se encuentra en la ruta del repositorio manifest/tekton/triggers/
     4. TriggerBinding: Objeto que vincula el template creado y que contiene los valores de los parámetros definidos en la plantilla. Se define en el archivo "tekton-trigger-binding.yaml", el cual se encuentra en la siguiente ruta manifest/tekton/triggers/. 
