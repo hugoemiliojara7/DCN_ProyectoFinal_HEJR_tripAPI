@@ -92,3 +92,17 @@ En la siguiente imagen se observa la creación del task y la impresión del log:
 Todos los ejercicios se realizaron en el branch del repositorio llamado "feature/git-clone-build", como se solicitó. En este branch se realizaron los commits correspondietes. 
 
 Los manifiestos ".yaml" se encuentran en la carpeta "../tripAPI/manifest/", los primeros dos en la carpeta "tekton-git-clone" y los segundos en la carpeta "tekton-build". 
+
+## Laboratorio 3. Pipeline CI 
+
+Esta práctica consistió en crear una pipeline con los tres pasos escenciales para el proceso CI, es decir, clonar un repositio de Github, realizar la compilación con maven-build y subir la nueva versión del servicio (imagen) al registry de contenedores, en este caso, Docker. 
+
+Para esto, se generaron los siguientes manifiestos: 
+
+    1. pipeline-ci.yaml: Definición del pipeline, con los pasos a seguir y los parámetros que debe recibir, además del orden de ejcución de cada task
+    2. pipelinerun-ci.yaml: Definición de la task run que ejecuta el pipeline definido. 
+
+Ambos archivos se encuentran en la carpeta manifest/tekton/pipelines/. 
+
+Tras la correcta ejecución del task-run, tenemos la ejecución de tres pods que realizan los tres pasos, completando el proceso de CI al tener una nueva imagen en DockerRegistry. 
+A partir de este punto, es posible definir manifiestos para realizar el proceso de despliegue de la nueva versión del servicio. 
